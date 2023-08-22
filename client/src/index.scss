@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.markdown-string {
+  p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .dialog-text-field {
+      margin-bottom: 16px;
+  }
+}

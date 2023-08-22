@@ -1,0 +1,7 @@
+# ignore directories and file types
+public
+*.json
+*.md
+*.sh
+src/**/*.svg
+src/**/*.d.ts

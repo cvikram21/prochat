@@ -1,0 +1,27 @@
+.chat-screen {
+    .app-bar {
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    .conversation-details-box {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-left: 12px;
+        padding-right: 12px;
+        display: flex;
+        .conversation-content {
+            margin-left: 12px;
+            .conversation-header {
+                display: flex;
+                justify-content: space-between;
+            }
+            .conversation-text {
+                display: block;
+                max-width: 392px;
+                padding-right: 8px;
+            }
+        }
+    }
+}
