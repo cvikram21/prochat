@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import './home.scss';
@@ -21,7 +21,7 @@ import {
 import { DoubleArrowTwoTone, LooksOne, LooksTwo, Looks3, Looks4, Looks5 } from '@mui/icons-material';
 import { CHAT_PATH } from '../../utils/constants';
 
-const Home: FunctionComponent = () => {
+const Home = () => {
 	const [openLoginResterDialog, setOpenLoginRegisterDialog] = useState(false);
 	const onClose = () => setOpenLoginRegisterDialog(false);
 	const onOpen = () => setOpenLoginRegisterDialog(true);
@@ -115,7 +115,7 @@ interface LoginRegisterDialogProps {
 	open: boolean;
 	onClose: Function;
 }
-const LoginRegisterDialog: FunctionComponent<any> = (props: LoginRegisterDialogProps) => {
+const LoginRegisterDialog = (props: LoginRegisterDialogProps) => {
 	const { open, onClose } = props;
 	const [isRegister, setIsRegister] = useState(false);
 	useEffect(() => {

@@ -1,4 +1,4 @@
-import { FunctionComponent, useMemo } from 'react';
+import { useMemo } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -9,7 +9,7 @@ import { PaletteMode } from '@mui/material';
 import { grey, blueGrey } from '@mui/material/colors';
 import ChatScreen from './pages/ChatScreen/chatScreen';
 
-const App: FunctionComponent = () => {
+const App = () => {
 	const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 	const getDesignTokens = (mode: PaletteMode) => ({
 		palette: {
@@ -28,19 +28,44 @@ const App: FunctionComponent = () => {
 				  }
 				: {
 						background: {
-							default: blueGrey[900],
+							default: blueGrey[800],
 						},
 				  }),
 		},
 		typography: {
 			fontFamily: ['Inconsolata'].join(','),
 		},
+		components: {
+			MuiGrid2: {
+				defaultProps: {
+					// all grids under this theme will apply
+					// negative margin on the top and left sides.
+					disableEqualOverflow: true,
+				},
+			},
+			MuiAppBar: {
+				...(mode === 'light'
+					? {
+							styleOverrides: {
+								colorPrimary: {
+									backgroundColor: grey[200],
+								},
+							},
+					  }
+					: {
+							styleOverrides: {
+								colorPrimary: {
+									backgroundColor: blueGrey[900],
+								},
+							},
+					  }),
+			},
+		},
 	});
 
-	const proChatTheme = useMemo(
-		() => createTheme(getDesignTokens(prefersDarkMode ? 'dark' : 'light')),
-		[prefersDarkMode]
-	);
+	const proChatTheme = useMemo(() => {
+		return createTheme(getDesignTokens(prefersDarkMode ? 'dark' : 'light'));
+	}, [prefersDarkMode]);
 	return (
 		<ThemeProvider theme={proChatTheme}>
 			<CssBaseline />
